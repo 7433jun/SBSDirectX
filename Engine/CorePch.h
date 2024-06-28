@@ -3,6 +3,10 @@
 
 using namespace std;
 
+// Helper 추가
+#include "d3dx12.h"
+#include <d3d12.h>
+
 //DirectX Header
 #include <wrl.h>
 #include <d3dcompiler.h>
@@ -16,6 +20,8 @@ using namespace DirectX;
 using namespace DirectX::PackedVector;
 using namespace Microsoft::WRL;
 
+// Helper library 추가
+#pragma comment(lib, "d3d12")
 //DirectX library
 #pragma comment(lib, "dxgi")
 #pragma comment(lib, "dxguid")
