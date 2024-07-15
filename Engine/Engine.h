@@ -1,4 +1,12 @@
 #pragma once
+
+#include "Device.h"
+#include "CommandQueue.h"
+#include "SwapChain.h"
+#include "RootSignature.h"
+#include "Mesh.h"
+#include "Shader.h"
+
 class Engine
 {
 private:
@@ -23,9 +31,15 @@ private:
 	D3D12_VIEWPORT viewPort = {};
 	D3D12_RECT scissorRect = {};
 
-	shared_ptr<class Device> device;
-	shared_ptr<class CommandQueue> cmdQueue;
-	shared_ptr<class SwapChain> swapChain;
+	shared_ptr<Device> device;
+	shared_ptr<CommandQueue> cmdQueue;
+	shared_ptr<SwapChain> swapChain;
+	shared_ptr<RootSignature> rootSignature;
+public:
+	shared_ptr<Device> GetDevice() { return device; }
+	shared_ptr<CommandQueue> GetCmdQueue() { return cmdQueue; }
+	shared_ptr<SwapChain> GetSwapChain() { return swapChain; }
+	shared_ptr<RootSignature> GetRootSignature() { return rootSignature; }
 public:
 	void Init(HWND _hwnd, int _width, int _height, bool _windowed);
 	void Render();

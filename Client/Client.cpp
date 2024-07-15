@@ -5,7 +5,6 @@
 
 #define MAX_LOADSTRING 100
 
-// HWND 전역 변수 선언
 HWND gHwnd;
 HINSTANCE hInst;
 WCHAR szTitle[MAX_LOADSTRING];
@@ -62,13 +61,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
     return (int) msg.wParam;
 }
 
-
-
-//
-//  함수: MyRegisterClass()
-//
-//  용도: 창 클래스를 등록합니다.
-//
 ATOM MyRegisterClass(HINSTANCE hInstance)
 {
     WNDCLASSEXW wcex;
@@ -83,7 +75,8 @@ ATOM MyRegisterClass(HINSTANCE hInstance)
     wcex.hIcon          = LoadIcon(hInstance, MAKEINTRESOURCE(IDI_CLIENT));
     wcex.hCursor        = LoadCursor(nullptr, IDC_ARROW);
     wcex.hbrBackground  = (HBRUSH)(COLOR_WINDOW+1);
-    wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_CLIENT);
+    //wcex.lpszMenuName   = MAKEINTRESOURCEW(IDC_CLIENT);
+    wcex.lpszMenuName = nullptr;
     wcex.lpszClassName  = szWindowClass;
     wcex.hIconSm        = LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -111,16 +104,6 @@ BOOL InitInstance(HINSTANCE hInstance, int nCmdShow)
    return TRUE;
 }
 
-//
-//  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
-//
-//  용도: 주 창의 메시지를 처리합니다.
-//
-//  WM_COMMAND  - 애플리케이션 메뉴를 처리합니다.
-//  WM_PAINT    - 주 창을 그립니다.
-//  WM_DESTROY  - 종료 메시지를 게시하고 반환합니다.
-//
-//
 LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 {
     switch (message)

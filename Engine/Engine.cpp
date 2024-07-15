@@ -20,10 +20,12 @@ void Engine::Init(HWND _hwnd, int _width, int _height, bool _windowed)
 	device = make_shared<Device>();
 	cmdQueue = make_shared<CommandQueue>();
 	swapChain = make_shared<SwapChain>();
+	rootSignature = make_shared<RootSignature>();
 
 	device->Init();
 	cmdQueue->Init(device->GetDevice(), swapChain);
 	swapChain->Init(hwnd, width, height, windowed, device->GetDevice(), device->GetDXGI(), cmdQueue->GetCmdQueue());
+	rootSignature->Init(device->GetDevice());
 }
 
 void Engine::Render()

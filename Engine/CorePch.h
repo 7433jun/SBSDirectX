@@ -1,13 +1,18 @@
 #pragma once
 #include <Windows.h>
 
+#include <memory>
+#include <string>
+#include <vector>
+#include <array>
+#include <list>
+#include <map>
+
 using namespace std;
 
-// Helper 추가
 #include "d3dx12.h"
 #include <d3d12.h>
 
-//DirectX Header
 #include <wrl.h>
 #include <d3dcompiler.h>
 #include <dxgi.h>
@@ -15,14 +20,18 @@ using namespace std;
 #include <DirectXPackedVector.h>
 #include <DirectXColors.h>
 
-//DirectX namespace
 using namespace DirectX;
 using namespace DirectX::PackedVector;
 using namespace Microsoft::WRL;
 
-// Helper library 추가
 #pragma comment(lib, "d3d12")
-//DirectX library
 #pragma comment(lib, "dxgi")
 #pragma comment(lib, "dxguid")
 #pragma comment(lib, "d3dcompiler")
+
+// Vertex 구조체
+struct Vertex
+{
+	XMFLOAT3 pos;
+	XMFLOAT4 color;
+};
