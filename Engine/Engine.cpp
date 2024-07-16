@@ -21,11 +21,13 @@ void Engine::Init(HWND _hwnd, int _width, int _height, bool _windowed)
 	cmdQueue = make_shared<CommandQueue>();
 	swapChain = make_shared<SwapChain>();
 	rootSignature = make_shared<RootSignature>();
+	constBuffer = make_shared<ConstantBuffer>();
 
 	device->Init();
 	cmdQueue->Init(device->GetDevice(), swapChain);
 	swapChain->Init(hwnd, width, height, windowed, device->GetDevice(), device->GetDXGI(), cmdQueue->GetCmdQueue());
 	rootSignature->Init(device->GetDevice());
+	constBuffer->Init(sizeof(XMFLOAT4), 256);
 }
 
 void Engine::Render()
